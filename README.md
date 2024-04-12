@@ -30,6 +30,7 @@ cd natools
 
 
 ```
+cd ipfs
 ./install.kubo_v0.20.0_linux.sh
 ./ipfs_setup.sh
 

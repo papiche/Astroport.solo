@@ -6,10 +6,10 @@ MY_PATH="`( cd \"$MY_PATH\" && pwd )`"  # absolutized and normalized
 ME="${0##*/}"
 
 # CHECK not root user !!
-if [ "$EUID" -eq 0 ]
-  then echo -e "DO NOT EXECUTE AS root. Choose a user for your Astroport Station (we like pi)"
+if [ "$EUID" = 0 ]
+  then echo "DO NOT EXECUTE AS root. Choose a user for your Astroport Station (we like pi)"
   exit 1
-else echo -e "OK $USER, let's go!";
+else echo "OK $USER, let's go!";
 fi
 
 # Ask user password on start
@@ -23,23 +23,23 @@ err() {
 
 # CHECK node IP isLAN?
 myIP=$(hostname -I | awk '{print $1}')
-isLAN=$(route -n |awk '$1 == "0.0.0.0" {print $2}' | grep -E "/(^127\.)|(^192\.168\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^::1$)|(^[fF][cCdD])/")
+isLAN=$(sudo route -n |awk '$1 == "0.0.0.0" {print $2}' | grep -E "/(^127\.)|(^192\.168\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^::1$)|(^[fF][cCdD])/")
 YOU=$(ipfs swarm peers >/dev/null 2>&1 && echo "$USER" || ps auxf --sort=+utime | grep -w ipfs | grep -v -E 'color=auto|grep' | tail -n 1 | cut -d " " -f 1);
 
 MACHINE_TYPE=`uname -m`
 
 # CHECK if daemon is already running
-if [[ $YOU ]]; then
+if [ $YOU ]; then
     echo "ipfs daemon already running...! Run by $YOU $MACHINE_TYPE"
-    [[ $YOU == $USER ]] && echo "Stopping ipfs daemon" && killall ipfs \
+    [ $YOU = $USER ] && echo "Stopping ipfs daemon" && killall ipfs \
                                         || (echo "ERROR $YOU is running ipfs, must be $USER" && exit 1)
 else
     # REINIT ipfs
-    [[ -s ~/.ipfs/config ]] && echo ">>> WARNING BACKUP OLD IPFS CONFIG ~/.ipfs/config.old"
+    [ -s ~/.ipfs/config ] && echo ">>> WARNING BACKUP OLD IPFS CONFIG ~/.ipfs/config.old"
     rm -f ~/.ipfs/config.old 2>/dev/null
     mv ~/.ipfs/config ~/.ipfs/config.old 2>/dev/null
 
-    [[ $isLAN ]] && ipfs init -p lowpower \
+    [ $isLAN ] && ipfs init -p lowpower \
     || ipfs init -p server
     # RESET NODE SECRET
     rm -f ~/.zen/game/secret.* 2>/dev/null
@@ -47,7 +47,7 @@ fi
 
 echo -e "Astroport activate IPFS Layer installation..."
 
-if [[ "$USER" == "xbian" ]]
+if [ "$USER" = "xbian" ]
 then
     echo "enabling ipfs initV service autostart"
     cd /etc/rc2.d && sudo ln -s ../init.d/ipfs S02ipfs
@@ -87,8 +87,7 @@ WantedBy=multi-user.target
 EOF
 
     ## LAN is dhtclient only
-    [[ ! $isLAN ]] \
-        && sed -i "s/--routing=dhtclient//g" /tmp/ipfs.service
+    [ ! $isLAN ] && sed -i "s/--routing=dhtclient//g" /tmp/ipfs.service
 
     sudo cp -f /tmp/ipfs.service /etc/systemd/system/
     sudo sed -i "s/_USER_/$USER/g" /etc/systemd/system/ipfs.service

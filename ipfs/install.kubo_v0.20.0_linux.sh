@@ -8,7 +8,7 @@ cd  ~/.zen/tmp
 architecture=$(uname -m)
 
 # Download appropriate version of kubo
-if [ "$architecture" == "x86_64" ]; then
+if [ "$architecture" = "x86_64" ]; then
     wget --no-check-certificate -O kubo.tar.gz https://dist.ipfs.tech/kubo/v0.20.0/kubo_v0.20.0_linux-amd64.tar.gz
     # /ipfs/QmPA3PLy3pCFssr9vFn9SY2amegWT3GyFYS1g4T5hJwW4d
 elif [ "$architecture" == "aarch64" ]; then
@@ -30,8 +30,9 @@ cd kubo
 sudo bash install.sh
 
 # Test & clean
-[[ $(ipfs --version) ]] \
-&& rm -Rf ~/.zen/tmp/kubo* \
-|| echo "problem occured"
+ipfs=$(ipfs --version --all)
+echo ipfs
+rm -Rf ~/.zen/tmp/kubo*
+
 
 exit 0

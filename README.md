@@ -62,7 +62,7 @@ Note taking application
 
 ```
 cd tiddlywiki
-./ipfs_setup.sh
+./install_tiddlywiki.sh
 
 ```
 

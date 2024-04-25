@@ -42,6 +42,7 @@ echo ${IPFSME} > ${MY_PATH}/.chain
 echo ${MOATS} > ${MY_PATH}/.moats
 
 ## README UPGRADE
+ipfs pin rm ${OLD}
 sed -i "s~${OLD}~${IPFSME}~g" ${MY_PATH}/README.md
 
 ## AUTO GIT

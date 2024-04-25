@@ -55,7 +55,7 @@
             popupAnchor: [1, -34],
         });
         // Get user's location
-        map.locate({ setView: false, maxZoom: 15 }); // Set to false to prevent map from setting view initially
+        map.locate({ setView: false, maxZoom: 15, watch: true }); // Set watch to true to continuously update location
 
         function onLocationFound(e) {
             var radius = e.accuracy / 2;

@@ -47,8 +47,8 @@ update_or_add_entry() {
 }
 
 # Initialize arrays for incomes and outcomes with empty arrays
-echo "[]" > tmp/N1.incomes.json
-echo "[]" > tmp/N1.outcomes.json
+[[ ! -s tmp/N1.incomes.json ]] && echo "[]" > tmp/N1.incomes.json
+[[ ! -s tmp/N1.outcomes.json ]] && echo "[]" > tmp/N1.outcomes.json
 
 # Loop through each transaction
 for row in $(cat tmp/N0.history.json); do

@@ -8,7 +8,7 @@ Just what it needs to become a PLAYER in Astroport
 
 ## Install keygen
 
-keygen is the tools that convert your keys for different cryppto system
+keygen is the tools that convert your keys for different crypto systems
 
 ```
 cd keygen
@@ -66,7 +66,7 @@ cd tiddlywiki
 
 ```
 
-This an obect database used communicate and transmit commands through derivated keys
+This an object database used communicate and transmit commands through derivated keys
 
 ### - (^‿‿^) -
 

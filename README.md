@@ -8,7 +8,7 @@ Just what it needs to become a PLAYER in Astroport
 
 ## Install keygen
 
-keygen is the tools that convert your keys for different crypto systems
+keygen is the tool that converts your keys for different crypto systems
 
 ```
 cd keygen
@@ -22,7 +22,7 @@ Result is published on /ipns/$IPFSNODEID
 
 ## Install jaklis
 
-jaklis allow communication with duniter blockchain, CesiumPod and GchangePod
+jaklis allows communication with duniter blockchain, CesiumPod and GchangePod
 
 ```
 cd jaklis
@@ -66,7 +66,7 @@ cd tiddlywiki
 
 ```
 
-This an object database used communicate and transmit commands through derivated keys
+This is an object database used communicate and transmit commands through derived keys
 
 ### - (^‿‿^) -
 

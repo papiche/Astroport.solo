@@ -3,7 +3,7 @@ MY_PATH="`dirname \"$0\"`"              # relative
 MY_PATH="`( cd \"$MY_PATH\" && pwd )`"  # absolutized and normalized
 hasError=0
 
-pip3 install --break-system-packages -r requirements.txt || hasError=1
+pip3 install -r requirements.txt || hasError=1
 chmod u+x natools.py
 sudo ln -sf $(realpath natools.py) /usr/local/bin/natools || hasError=1
 

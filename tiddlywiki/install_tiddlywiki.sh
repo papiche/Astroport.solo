@@ -18,7 +18,7 @@ fi
 # Install TiddlyWiki if not installed
 if ! command_exists tiddlywiki; then
     echo "TiddlyWiki not found. Installing..."
-    sudo npm install -g tiddlywiki
+    sudo npm install -g tiddlywiki@5.2.3
     echo "TiddlyWiki installed"
 else
     echo "TiddlyWiki installed"

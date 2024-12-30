@@ -11,10 +11,9 @@ for i in gcc python3-pip python3-setuptools libpq-dev python3-dev python3-wheel;
     fi
 done
 
-pip3 install --break-system-packages -r requirements.txt || hasError=1
+pip3 install -r requirements.txt || hasError=1
 chmod u+x jaklis.py
 
-mkdir -p $HOME/.local/bin/
 ln -sf $(realpath jaklis.py) $HOME/.local/bin/jaklis || hasError=1
 cp ${MY_PATH}/.env.template $HOME/.local/bin/.env || hasError=1
 

@@ -15,6 +15,9 @@ if [ -s "$HOME/.astro/bin/activate" ]; then
     source $HOME/.astro/bin/activate       # Active l'environnement Python s'il existe pour les outils Python.
 fi
 
+## INSTALL PYTHON + CRYPTO LAYER
+$MY_PATH/install.sh
+
 [[ ! $(which ipfs) ]] && echo "INSTALL ipfs" && cd "$MY_PATH/ipfs" && exit 0
 [[ ! $(which keygen) ]] && echo "INSTALL keygen" && cd "$MY_PATH/keygen" && exit 0
 [[ ! $(which jaklis) ]] && echo "INSTALL jaklis" && cd "$MY_PATH/jaklis" && exit 0

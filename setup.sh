@@ -5,8 +5,11 @@ hasError=0
 
 ## CREATES ~/.astro PYTHON ENV
 if [[ ! -s ~/.astro/bin/activate ]]; then
-    /usr/bin/python -m venv .astro
-    . ~/.astro/bin/activate
+    PYTHON=$(which python)
+    cd $HOME
+    $PYTHON -m venv .astro
+    source ~/.astro/bin/activate
+    cd -
 fi
 ME="${0##*/}"
 

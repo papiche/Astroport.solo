@@ -4,7 +4,7 @@ MY_PATH="`( cd \"$MY_PATH\" && pwd )`"  # absolutized and normalized
 hasError=0
 
 ## CREATES ~/.astro PYTHON ENV
-if [[ ! -s ~/.astro/bin/activate ]] then
+if [[ ! -s ~/.astro/bin/activate ]]; then
     /usr/bin/python -m venv .astro
     . ~/.astro/bin/activate
 fi
